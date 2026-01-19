@@ -1,0 +1,3 @@
+[*.cs]
+csharp_indent_case_contents_when_block = false
+csharp_indent_labels = no_change
