@@ -60,7 +60,7 @@ namespace SVS_Ahegao
 
 				//Check finish proc and update ahegaos
 				CheckFinishProc();
-				UpdateAhegaos();
+				ProcessAhegao();
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace SVS_Ahegao
 		}
 
 		//Update all
-		public void UpdateAhegaos()
+		public void ProcessAhegao()
 		{
 			switch (_currentCategory)
 			{
@@ -386,19 +386,6 @@ namespace SVS_Ahegao
 
 
 
-		/*EVENT HANDLING*/
-		private void OnWordPlayerPostChangeState(GeneralWords.SetCategory category)
-		{
-			SetCategory(category);
-		}
-
-		private void OnWordPlayerPostPlay()
-		{
-			UpdateAllBlush();
-		}
-
-
-
 		//Initialization
 		private void Start()
 		{
@@ -459,7 +446,7 @@ namespace SVS_Ahegao
 			{
 				if (AhegaoPlugin.TryGetAhegaoComponent(out AhegaoComponent? ahegaoComponent))
 				{
-					ahegaoComponent.OnWordPlayerPostChangeState(category);
+					ahegaoComponent.SetCategory(category);
 				}
 			}
 
@@ -469,7 +456,7 @@ namespace SVS_Ahegao
 			{
 				if (AhegaoPlugin.TryGetAhegaoComponent(out AhegaoComponent? ahegaoComponent))
 				{
-					ahegaoComponent.OnWordPlayerPostPlay();
+					ahegaoComponent.UpdateAllBlush();
 				}
 			}
 
